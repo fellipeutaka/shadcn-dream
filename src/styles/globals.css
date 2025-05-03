@@ -114,7 +114,26 @@
   * {
     @apply border-border outline-ring/50;
   }
+
+  html {
+    scroll-behavior: smooth;
+
+    scrollbar-color: var(--color-border) transparent;
+    scrollbar-width: thin;
+
+    &.light {
+      color-scheme: light;
+    }
+
+    &.dark {
+      color-scheme: dark;
+    }
+  }
+
   body {
-    @apply bg-background text-foreground;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+
+    @apply bg-background text-foreground antialiased;
   }
 }
