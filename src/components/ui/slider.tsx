@@ -1,6 +1,6 @@
 "use client";
 
-import * as SliderPrimitive from "@radix-ui/react-slider";
+import { Slider as SliderPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/cva";
 import { useMemo } from "react";

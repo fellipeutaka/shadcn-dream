@@ -1,6 +1,6 @@
 "use client";
 
-import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
+import { ToggleGroup as ToggleGroupPrimitive } from "radix-ui";
 
 import { toggleVariants } from "@/components/ui/toggle";
 import { cn } from "@/lib/cva";
