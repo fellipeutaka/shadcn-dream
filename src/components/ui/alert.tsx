@@ -1,5 +1,3 @@
-import type * as React from "react";
-
 import { cn, cva } from "@/lib/cva";
 import type { VariantProps } from "cva";
 
