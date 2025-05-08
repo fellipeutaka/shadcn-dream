@@ -1,34 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## shadcn-dream
 
-## Getting Started
+This project is a customized version of the components from shadcn/ui. While shadcn/ui provides an excellent foundation, `shadcn-dream` incorporates several enhancements and modifications to better suit specific development preferences and needs.
 
-First, run the development server:
+### Why shadcn-dream?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Here are the key reasons and changes that differentiate `shadcn-dream` from the standard shadcn/ui:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Updated `class-variance-authority` (cva)**: Utilizes the latest version of `class-variance-authority`, referred to as `cva`, for managing component variants.
+- **Enhanced Global CSS**: Includes improvements to the default CSS, such as:
+  - `scroll-behavior: smooth;` applied to the `html` element for smoother page scrolling.
+  - Font anti-aliasing (`-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;`) applied to the `body` for crisper text rendering.
+- **Radix UI Monopackage**: Employs the `radix-ui` monopackage instead of installing individual Radix UI primitive packages (e.g., `@radix-ui/react-select`, `@radix-ui/react-dialog`). This can simplify dependency management.
+- **Exported Component Props**: All component and sub-component props are exported, offering greater flexibility and type safety when extending or wrapping components.
