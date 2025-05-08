@@ -8,14 +8,15 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
+  type DialogProps,
   DialogTitle,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/cva";
 
-function Command({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive>) {
+export interface CommandProps
+  extends React.ComponentProps<typeof CommandPrimitive> {}
+
+export function Command({ className, ...props }: CommandProps) {
   return (
     <CommandPrimitive
       data-slot="command"
@@ -28,15 +29,17 @@ function Command({
   );
 }
 
-function CommandDialog({
+export interface CommandDialogProps extends DialogProps {
+  title?: string;
+  description?: string;
+}
+
+export function CommandDialog({
   title = "Command Palette",
   description = "Search for a command to run...",
   children,
   ...props
-}: React.ComponentProps<typeof Dialog> & {
-  title?: string;
-  description?: string;
-}) {
+}: CommandDialogProps) {
   return (
     <Dialog {...props}>
       <DialogHeader className="sr-only">
@@ -52,10 +55,10 @@ function CommandDialog({
   );
 }
 
-function CommandInput({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.Input>) {
+export interface CommandInputProps
+  extends React.ComponentProps<typeof CommandPrimitive.Input> {}
+
+export function CommandInput({ className, ...props }: CommandInputProps) {
   return (
     <div
       data-slot="command-input-wrapper"
@@ -74,10 +77,10 @@ function CommandInput({
   );
 }
 
-function CommandList({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.List>) {
+export interface CommandListProps
+  extends React.ComponentProps<typeof CommandPrimitive.List> {}
+
+export function CommandList({ className, ...props }: CommandListProps) {
   return (
     <CommandPrimitive.List
       data-slot="command-list"
@@ -90,9 +93,10 @@ function CommandList({
   );
 }
 
-function CommandEmpty({
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.Empty>) {
+export interface CommandEmptyProps
+  extends React.ComponentProps<typeof CommandPrimitive.Empty> {}
+
+export function CommandEmpty({ ...props }: CommandEmptyProps) {
   return (
     <CommandPrimitive.Empty
       data-slot="command-empty"
@@ -102,10 +106,10 @@ function CommandEmpty({
   );
 }
 
-function CommandGroup({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.Group>) {
+export interface CommandGroupProps
+  extends React.ComponentProps<typeof CommandPrimitive.Group> {}
+
+export function CommandGroup({ className, ...props }: CommandGroupProps) {
   return (
     <CommandPrimitive.Group
       data-slot="command-group"
@@ -118,10 +122,13 @@ function CommandGroup({
   );
 }
 
-function CommandSeparator({
+export interface CommandSeparatorProps
+  extends React.ComponentProps<typeof CommandPrimitive.Separator> {}
+
+export function CommandSeparator({
   className,
   ...props
-}: React.ComponentProps<typeof CommandPrimitive.Separator>) {
+}: CommandSeparatorProps) {
   return (
     <CommandPrimitive.Separator
       data-slot="command-separator"
@@ -131,10 +138,10 @@ function CommandSeparator({
   );
 }
 
-function CommandItem({
-  className,
-  ...props
-}: React.ComponentProps<typeof CommandPrimitive.Item>) {
+export interface CommandItemProps
+  extends React.ComponentProps<typeof CommandPrimitive.Item> {}
+
+export function CommandItem({ className, ...props }: CommandItemProps) {
   return (
     <CommandPrimitive.Item
       data-slot="command-item"
@@ -147,10 +154,9 @@ function CommandItem({
   );
 }
 
-function CommandShortcut({
-  className,
-  ...props
-}: React.ComponentProps<"span">) {
+export interface CommandShortcutProps extends React.ComponentProps<"span"> {}
+
+export function CommandShortcut({ className, ...props }: CommandShortcutProps) {
   return (
     <span
       data-slot="command-shortcut"
@@ -162,15 +168,3 @@ function CommandShortcut({
     />
   );
 }
-
-export {
-  Command,
-  CommandDialog,
-  CommandInput,
-  CommandList,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem,
-  CommandShortcut,
-  CommandSeparator,
-};

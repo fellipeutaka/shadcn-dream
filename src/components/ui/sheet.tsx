@@ -5,32 +5,38 @@ import { Dialog as SheetPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/cva";
 
-function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
+export interface SheetProps
+  extends React.ComponentProps<typeof SheetPrimitive.Root> {}
+
+export function Sheet({ ...props }: SheetProps) {
   return <SheetPrimitive.Root data-slot="sheet" {...props} />;
 }
 
-function SheetTrigger({
-  ...props
-}: React.ComponentProps<typeof SheetPrimitive.Trigger>) {
+export interface SheetTriggerProps
+  extends React.ComponentProps<typeof SheetPrimitive.Trigger> {}
+
+export function SheetTrigger({ ...props }: SheetTriggerProps) {
   return <SheetPrimitive.Trigger data-slot="sheet-trigger" {...props} />;
 }
 
-function SheetClose({
-  ...props
-}: React.ComponentProps<typeof SheetPrimitive.Close>) {
+export interface SheetCloseProps
+  extends React.ComponentProps<typeof SheetPrimitive.Close> {}
+
+export function SheetClose({ ...props }: SheetCloseProps) {
   return <SheetPrimitive.Close data-slot="sheet-close" {...props} />;
 }
 
-function SheetPortal({
-  ...props
-}: React.ComponentProps<typeof SheetPrimitive.Portal>) {
+export interface SheetPortalProps
+  extends React.ComponentProps<typeof SheetPrimitive.Portal> {}
+
+export function SheetPortal({ ...props }: SheetPortalProps) {
   return <SheetPrimitive.Portal data-slot="sheet-portal" {...props} />;
 }
 
-function SheetOverlay({
-  className,
-  ...props
-}: React.ComponentProps<typeof SheetPrimitive.Overlay>) {
+export interface SheetOverlayProps
+  extends React.ComponentProps<typeof SheetPrimitive.Overlay> {}
+
+export function SheetOverlay({ className, ...props }: SheetOverlayProps) {
   return (
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
@@ -43,14 +49,17 @@ function SheetOverlay({
   );
 }
 
-function SheetContent({
+export interface SheetContentProps
+  extends React.ComponentProps<typeof SheetPrimitive.Content> {
+  side?: "top" | "right" | "bottom" | "left";
+}
+
+export function SheetContent({
   className,
   children,
   side = "right",
   ...props
-}: React.ComponentProps<typeof SheetPrimitive.Content> & {
-  side?: "top" | "right" | "bottom" | "left";
-}) {
+}: SheetContentProps) {
   return (
     <SheetPortal>
       <SheetOverlay />
@@ -80,7 +89,9 @@ function SheetContent({
   );
 }
 
-function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
+export interface SheetHeaderProps extends React.ComponentProps<"div"> {}
+
+export function SheetHeader({ className, ...props }: SheetHeaderProps) {
   return (
     <div
       data-slot="sheet-header"
@@ -90,7 +101,9 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
+export interface SheetFooterProps extends React.ComponentProps<"div"> {}
+
+export function SheetFooter({ className, ...props }: SheetFooterProps) {
   return (
     <div
       data-slot="sheet-footer"
@@ -100,10 +113,10 @@ function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function SheetTitle({
-  className,
-  ...props
-}: React.ComponentProps<typeof SheetPrimitive.Title>) {
+export interface SheetTitleProps
+  extends React.ComponentProps<typeof SheetPrimitive.Title> {}
+
+export function SheetTitle({ className, ...props }: SheetTitleProps) {
   return (
     <SheetPrimitive.Title
       data-slot="sheet-title"
@@ -113,10 +126,13 @@ function SheetTitle({
   );
 }
 
-function SheetDescription({
+export interface SheetDescriptionProps
+  extends React.ComponentProps<typeof SheetPrimitive.Description> {}
+
+export function SheetDescription({
   className,
   ...props
-}: React.ComponentProps<typeof SheetPrimitive.Description>) {
+}: SheetDescriptionProps) {
   return (
     <SheetPrimitive.Description
       data-slot="sheet-description"
@@ -125,14 +141,3 @@ function SheetDescription({
     />
   );
 }
-
-export {
-  Sheet,
-  SheetTrigger,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetTitle,
-  SheetDescription,
-};

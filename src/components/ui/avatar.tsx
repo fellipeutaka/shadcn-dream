@@ -4,10 +4,10 @@ import { Avatar as AvatarPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/cva";
 
-function Avatar({
-  className,
-  ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Root>) {
+export interface AvatarProps
+  extends React.ComponentProps<typeof AvatarPrimitive.Root> {}
+
+export function Avatar({ className, ...props }: AvatarProps) {
   return (
     <AvatarPrimitive.Root
       data-slot="avatar"
@@ -20,10 +20,10 @@ function Avatar({
   );
 }
 
-function AvatarImage({
-  className,
-  ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Image>) {
+export interface AvatarImageProps
+  extends React.ComponentProps<typeof AvatarPrimitive.Image> {}
+
+export function AvatarImage({ className, ...props }: AvatarImageProps) {
   return (
     <AvatarPrimitive.Image
       data-slot="avatar-image"
@@ -33,10 +33,10 @@ function AvatarImage({
   );
 }
 
-function AvatarFallback({
-  className,
-  ...props
-}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {
+export interface AvatarFallbackProps
+  extends React.ComponentProps<typeof AvatarPrimitive.Fallback> {}
+
+export function AvatarFallback({ className, ...props }: AvatarFallbackProps) {
   return (
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
@@ -48,5 +48,3 @@ function AvatarFallback({
     />
   );
 }
-
-export { Avatar, AvatarImage, AvatarFallback };

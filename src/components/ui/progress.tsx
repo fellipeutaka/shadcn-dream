@@ -4,11 +4,10 @@ import { Progress as ProgressPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/cva";
 
-function Progress({
-  className,
-  value,
-  ...props
-}: React.ComponentProps<typeof ProgressPrimitive.Root>) {
+export interface ProgressProps
+  extends React.ComponentProps<typeof ProgressPrimitive.Root> {}
+
+export function Progress({ className, value, ...props }: ProgressProps) {
   return (
     <ProgressPrimitive.Root
       data-slot="progress"
@@ -26,5 +25,3 @@ function Progress({
     </ProgressPrimitive.Root>
   );
 }
-
-export { Progress };

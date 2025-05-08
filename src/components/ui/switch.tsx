@@ -4,10 +4,10 @@ import { Switch as SwitchPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/cva";
 
-function Switch({
-  className,
-  ...props
-}: React.ComponentProps<typeof SwitchPrimitive.Root>) {
+export interface SwitchProps
+  extends React.ComponentProps<typeof SwitchPrimitive.Root> {}
+
+export function Switch({ className, ...props }: SwitchProps) {
   return (
     <SwitchPrimitive.Root
       data-slot="switch"
@@ -26,5 +26,3 @@ function Switch({
     </SwitchPrimitive.Root>
   );
 }
-
-export { Switch };

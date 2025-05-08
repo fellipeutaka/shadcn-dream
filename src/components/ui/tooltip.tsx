@@ -4,10 +4,13 @@ import { Tooltip as TooltipPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/cva";
 
-function TooltipProvider({
+export interface TooltipProviderProps
+  extends React.ComponentProps<typeof TooltipPrimitive.Provider> {}
+
+export function TooltipProvider({
   delayDuration = 0,
   ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
+}: TooltipProviderProps) {
   return (
     <TooltipPrimitive.Provider
       data-slot="tooltip-provider"
@@ -17,9 +20,10 @@ function TooltipProvider({
   );
 }
 
-function Tooltip({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Root>) {
+export interface TooltipProps
+  extends React.ComponentProps<typeof TooltipPrimitive.Root> {}
+
+export function Tooltip({ ...props }: TooltipProps) {
   return (
     <TooltipProvider>
       <TooltipPrimitive.Root data-slot="tooltip" {...props} />
@@ -27,18 +31,22 @@ function Tooltip({
   );
 }
 
-function TooltipTrigger({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
+export interface TooltipTriggerProps
+  extends React.ComponentProps<typeof TooltipPrimitive.Trigger> {}
+
+export function TooltipTrigger({ ...props }: TooltipTriggerProps) {
   return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />;
 }
 
-function TooltipContent({
+export interface TooltipContentProps
+  extends React.ComponentProps<typeof TooltipPrimitive.Content> {}
+
+export function TooltipContent({
   className,
   sideOffset = 0,
   children,
   ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Content>) {
+}: TooltipContentProps) {
   return (
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content
@@ -56,5 +64,3 @@ function TooltipContent({
     </TooltipPrimitive.Portal>
   );
 }
-
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };

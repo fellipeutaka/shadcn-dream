@@ -1,6 +1,8 @@
 import { cn } from "@/lib/cva";
 
-function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+export interface SkeletonProps extends React.ComponentProps<"div"> {}
+
+export function Skeleton({ className, ...props }: SkeletonProps) {
   return (
     <div
       data-slot="skeleton"
@@ -9,5 +11,3 @@ function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
     />
   );
 }
-
-export { Skeleton };

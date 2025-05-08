@@ -5,10 +5,10 @@ import { Checkbox as CheckboxPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/cva";
 
-function Checkbox({
-  className,
-  ...props
-}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+export interface CheckboxProps
+  extends React.ComponentProps<typeof CheckboxPrimitive.Root> {}
+
+export function Checkbox({ className, ...props }: CheckboxProps) {
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
@@ -27,5 +27,3 @@ function Checkbox({
     </CheckboxPrimitive.Root>
   );
 }
-
-export { Checkbox };

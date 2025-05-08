@@ -6,10 +6,13 @@ import * as ResizablePrimitive from "react-resizable-panels";
 
 import { cn } from "@/lib/cva";
 
-function ResizablePanelGroup({
+export interface ResizablePanelGroupProps
+  extends React.ComponentProps<typeof ResizablePrimitive.PanelGroup> {}
+
+export function ResizablePanelGroup({
   className,
   ...props
-}: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>) {
+}: ResizablePanelGroupProps) {
   return (
     <ResizablePrimitive.PanelGroup
       data-slot="resizable-panel-group"
@@ -22,19 +25,23 @@ function ResizablePanelGroup({
   );
 }
 
-function ResizablePanel({
-  ...props
-}: React.ComponentProps<typeof ResizablePrimitive.Panel>) {
+export interface ResizablePanelProps
+  extends React.ComponentProps<typeof ResizablePrimitive.Panel> {}
+
+export function ResizablePanel({ ...props }: ResizablePanelProps) {
   return <ResizablePrimitive.Panel data-slot="resizable-panel" {...props} />;
 }
 
-function ResizableHandle({
+export interface ResizableHandleProps
+  extends React.ComponentProps<typeof ResizablePrimitive.PanelResizeHandle> {
+  withHandle?: boolean;
+}
+
+export function ResizableHandle({
   withHandle,
   className,
   ...props
-}: React.ComponentProps<typeof ResizablePrimitive.PanelResizeHandle> & {
-  withHandle?: boolean;
-}) {
+}: ResizableHandleProps) {
   return (
     <ResizablePrimitive.PanelResizeHandle
       data-slot="resizable-handle"
@@ -52,5 +59,3 @@ function ResizableHandle({
     </ResizablePrimitive.PanelResizeHandle>
   );
 }
-
-export { ResizablePanelGroup, ResizablePanel, ResizableHandle };

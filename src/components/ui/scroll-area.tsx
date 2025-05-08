@@ -4,11 +4,10 @@ import { ScrollArea as ScrollAreaPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/cva";
 
-function ScrollArea({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<typeof ScrollAreaPrimitive.Root>) {
+export interface ScrollAreaProps
+  extends React.ComponentProps<typeof ScrollAreaPrimitive.Root> {}
+
+export function ScrollArea({ className, children, ...props }: ScrollAreaProps) {
   return (
     <ScrollAreaPrimitive.Root
       data-slot="scroll-area"
@@ -27,11 +26,16 @@ function ScrollArea({
   );
 }
 
-function ScrollBar({
+export interface ScrollBarProps
+  extends React.ComponentProps<
+    typeof ScrollAreaPrimitive.ScrollAreaScrollbar
+  > {}
+
+export function ScrollBar({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>) {
+}: ScrollBarProps) {
   return (
     <ScrollAreaPrimitive.ScrollAreaScrollbar
       data-slot="scroll-area-scrollbar"
@@ -53,5 +57,3 @@ function ScrollBar({
     </ScrollAreaPrimitive.ScrollAreaScrollbar>
   );
 }
-
-export { ScrollArea, ScrollBar };

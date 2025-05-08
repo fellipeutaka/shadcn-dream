@@ -4,34 +4,37 @@ import { Drawer as DrawerPrimitive } from "vaul";
 
 import { cn } from "@/lib/cva";
 
-function Drawer({
-  ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Root>) {
+export type DrawerProps = React.ComponentProps<typeof DrawerPrimitive.Root>;
+
+export function Drawer({ ...props }: DrawerProps) {
   return <DrawerPrimitive.Root data-slot="drawer" {...props} />;
 }
 
-function DrawerTrigger({
-  ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Trigger>) {
+export interface DrawerTriggerProps
+  extends React.ComponentProps<typeof DrawerPrimitive.Trigger> {}
+
+export function DrawerTrigger({ ...props }: DrawerTriggerProps) {
   return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />;
 }
 
-function DrawerPortal({
-  ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Portal>) {
+export interface DrawerPortalProps
+  extends React.ComponentProps<typeof DrawerPrimitive.Portal> {}
+
+export function DrawerPortal({ ...props }: DrawerPortalProps) {
   return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />;
 }
 
-function DrawerClose({
-  ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Close>) {
+export interface DrawerCloseProps
+  extends React.ComponentProps<typeof DrawerPrimitive.Close> {}
+
+export function DrawerClose({ ...props }: DrawerCloseProps) {
   return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />;
 }
 
-function DrawerOverlay({
-  className,
-  ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Overlay>) {
+export interface DrawerOverlayProps
+  extends React.ComponentProps<typeof DrawerPrimitive.Overlay> {}
+
+export function DrawerOverlay({ className, ...props }: DrawerOverlayProps) {
   return (
     <DrawerPrimitive.Overlay
       data-slot="drawer-overlay"
@@ -44,11 +47,14 @@ function DrawerOverlay({
   );
 }
 
-function DrawerContent({
+export interface DrawerContentProps
+  extends React.ComponentProps<typeof DrawerPrimitive.Content> {}
+
+export function DrawerContent({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Content>) {
+}: DrawerContentProps) {
   return (
     <DrawerPortal data-slot="drawer-portal">
       <DrawerOverlay />
@@ -71,7 +77,9 @@ function DrawerContent({
   );
 }
 
-function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
+export interface DrawerHeaderProps extends React.ComponentProps<"div"> {}
+
+export function DrawerHeader({ className, ...props }: DrawerHeaderProps) {
   return (
     <div
       data-slot="drawer-header"
@@ -81,7 +89,9 @@ function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function DrawerFooter({ className, ...props }: React.ComponentProps<"div">) {
+export interface DrawerFooterProps extends React.ComponentProps<"div"> {}
+
+export function DrawerFooter({ className, ...props }: DrawerFooterProps) {
   return (
     <div
       data-slot="drawer-footer"
@@ -91,10 +101,10 @@ function DrawerFooter({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function DrawerTitle({
-  className,
-  ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Title>) {
+export interface DrawerTitleProps
+  extends React.ComponentProps<typeof DrawerPrimitive.Title> {}
+
+export function DrawerTitle({ className, ...props }: DrawerTitleProps) {
   return (
     <DrawerPrimitive.Title
       data-slot="drawer-title"
@@ -104,10 +114,13 @@ function DrawerTitle({
   );
 }
 
-function DrawerDescription({
+export interface DrawerDescriptionProps
+  extends React.ComponentProps<typeof DrawerPrimitive.Description> {}
+
+export function DrawerDescription({
   className,
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Description>) {
+}: DrawerDescriptionProps) {
   return (
     <DrawerPrimitive.Description
       data-slot="drawer-description"
@@ -116,16 +129,3 @@ function DrawerDescription({
     />
   );
 }
-
-export {
-  Drawer,
-  DrawerPortal,
-  DrawerOverlay,
-  DrawerTrigger,
-  DrawerClose,
-  DrawerContent,
-  DrawerHeader,
-  DrawerFooter,
-  DrawerTitle,
-  DrawerDescription,
-};

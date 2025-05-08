@@ -3,14 +3,17 @@ import { NavigationMenu as NavigationMenuPrimitive } from "radix-ui";
 
 import { cn, cva } from "@/lib/cva";
 
-function NavigationMenu({
+export interface NavigationMenuProps
+  extends React.ComponentProps<typeof NavigationMenuPrimitive.Root> {
+  viewport?: boolean;
+}
+
+export function NavigationMenu({
   className,
   children,
   viewport = true,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Root> & {
-  viewport?: boolean;
-}) {
+}: NavigationMenuProps) {
   return (
     <NavigationMenuPrimitive.Root
       data-slot="navigation-menu"
@@ -27,10 +30,13 @@ function NavigationMenu({
   );
 }
 
-function NavigationMenuList({
+export interface NavigationMenuListProps
+  extends React.ComponentProps<typeof NavigationMenuPrimitive.List> {}
+
+export function NavigationMenuList({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.List>) {
+}: NavigationMenuListProps) {
   return (
     <NavigationMenuPrimitive.List
       data-slot="navigation-menu-list"
@@ -43,10 +49,13 @@ function NavigationMenuList({
   );
 }
 
-function NavigationMenuItem({
+export interface NavigationMenuItemProps
+  extends React.ComponentProps<typeof NavigationMenuPrimitive.Item> {}
+
+export function NavigationMenuItem({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Item>) {
+}: NavigationMenuItemProps) {
   return (
     <NavigationMenuPrimitive.Item
       data-slot="navigation-menu-item"
@@ -56,15 +65,18 @@ function NavigationMenuItem({
   );
 }
 
-const navigationMenuTriggerStyle = cva({
+export const navigationMenuTriggerStyle = cva({
   base: "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[state=open]:hover:bg-accent data-[state=open]:text-accent-foreground data-[state=open]:focus:bg-accent data-[state=open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1",
 });
 
-function NavigationMenuTrigger({
+export interface NavigationMenuTriggerProps
+  extends React.ComponentProps<typeof NavigationMenuPrimitive.Trigger> {}
+
+export function NavigationMenuTrigger({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Trigger>) {
+}: NavigationMenuTriggerProps) {
   return (
     <NavigationMenuPrimitive.Trigger
       data-slot="navigation-menu-trigger"
@@ -80,10 +92,13 @@ function NavigationMenuTrigger({
   );
 }
 
-function NavigationMenuContent({
+export interface NavigationMenuContentProps
+  extends React.ComponentProps<typeof NavigationMenuPrimitive.Content> {}
+
+export function NavigationMenuContent({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Content>) {
+}: NavigationMenuContentProps) {
   return (
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
@@ -97,10 +112,13 @@ function NavigationMenuContent({
   );
 }
 
-function NavigationMenuViewport({
+export interface NavigationMenuViewportProps
+  extends React.ComponentProps<typeof NavigationMenuPrimitive.Viewport> {}
+
+export function NavigationMenuViewport({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
+}: NavigationMenuViewportProps) {
   return (
     <div
       className={cn(
@@ -119,10 +137,13 @@ function NavigationMenuViewport({
   );
 }
 
-function NavigationMenuLink({
+export interface NavigationMenuLinkProps
+  extends React.ComponentProps<typeof NavigationMenuPrimitive.Link> {}
+
+export function NavigationMenuLink({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Link>) {
+}: NavigationMenuLinkProps) {
   return (
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
@@ -135,10 +156,13 @@ function NavigationMenuLink({
   );
 }
 
-function NavigationMenuIndicator({
+export interface NavigationMenuIndicatorProps
+  extends React.ComponentProps<typeof NavigationMenuPrimitive.Indicator> {}
+
+export function NavigationMenuIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Indicator>) {
+}: NavigationMenuIndicatorProps) {
   return (
     <NavigationMenuPrimitive.Indicator
       data-slot="navigation-menu-indicator"
@@ -152,15 +176,3 @@ function NavigationMenuIndicator({
     </NavigationMenuPrimitive.Indicator>
   );
 }
-
-export {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuContent,
-  NavigationMenuTrigger,
-  NavigationMenuLink,
-  NavigationMenuIndicator,
-  NavigationMenuViewport,
-  navigationMenuTriggerStyle,
-};

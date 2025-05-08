@@ -1,6 +1,8 @@
 import { cn } from "@/lib/cva";
 
-function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
+export interface TextareaProps extends React.ComponentProps<"textarea"> {}
+
+export function Textarea({ className, ...props }: TextareaProps) {
   return (
     <textarea
       data-slot="textarea"
@@ -12,5 +14,3 @@ function Textarea({ className, ...props }: React.ComponentProps<"textarea">) {
     />
   );
 }
-
-export { Textarea };

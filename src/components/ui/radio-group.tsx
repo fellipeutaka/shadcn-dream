@@ -5,10 +5,10 @@ import { RadioGroup as RadioGroupPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/cva";
 
-function RadioGroup({
-  className,
-  ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Root>) {
+export interface RadioGroupProps
+  extends React.ComponentProps<typeof RadioGroupPrimitive.Root> {}
+
+export function RadioGroup({ className, ...props }: RadioGroupProps) {
   return (
     <RadioGroupPrimitive.Root
       data-slot="radio-group"
@@ -18,10 +18,10 @@ function RadioGroup({
   );
 }
 
-function RadioGroupItem({
-  className,
-  ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Item>) {
+export interface RadioGroupItemProps
+  extends React.ComponentProps<typeof RadioGroupPrimitive.Item> {}
+
+export function RadioGroupItem({ className, ...props }: RadioGroupItemProps) {
   return (
     <RadioGroupPrimitive.Item
       data-slot="radio-group-item"
@@ -40,5 +40,3 @@ function RadioGroupItem({
     </RadioGroupPrimitive.Item>
   );
 }
-
-export { RadioGroup, RadioGroupItem };

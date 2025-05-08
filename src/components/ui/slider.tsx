@@ -5,21 +5,24 @@ import { Slider as SliderPrimitive } from "radix-ui";
 import { cn } from "@/lib/cva";
 import { useMemo } from "react";
 
-function Slider({
+export interface SliderProps
+  extends React.ComponentProps<typeof SliderPrimitive.Root> {}
+
+export function Slider({
   className,
   defaultValue,
   value,
   min = 0,
   max = 100,
   ...props
-}: React.ComponentProps<typeof SliderPrimitive.Root>) {
+}: SliderProps) {
   const _values = useMemo(
     () =>
       Array.isArray(value)
         ? value
         : Array.isArray(defaultValue)
-          ? defaultValue
-          : [min, max],
+        ? defaultValue
+        : [min, max],
     [value, defaultValue, min, max]
   );
 
@@ -60,5 +63,3 @@ function Slider({
     </SliderPrimitive.Root>
   );
 }
-
-export { Slider };

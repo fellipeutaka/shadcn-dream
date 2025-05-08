@@ -7,7 +7,9 @@ import {
 import { type Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/cva";
 
-function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
+export interface PaginationProps extends React.ComponentProps<"nav"> {}
+
+export function Pagination({ className, ...props }: PaginationProps) {
   return (
     <nav
       aria-label="pagination"
@@ -18,10 +20,12 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   );
 }
 
-function PaginationContent({
+export interface PaginationContentProps extends React.ComponentProps<"ul"> {}
+
+export function PaginationContent({
   className,
   ...props
-}: React.ComponentProps<"ul">) {
+}: PaginationContentProps) {
   return (
     <ul
       data-slot="pagination-content"
@@ -31,16 +35,19 @@ function PaginationContent({
   );
 }
 
-function PaginationItem({ ...props }: React.ComponentProps<"li">) {
+export interface PaginationItemProps extends React.ComponentProps<"li"> {}
+
+export function PaginationItem({ ...props }: PaginationItemProps) {
   return <li data-slot="pagination-item" {...props} />;
 }
 
-type PaginationLinkProps = {
+export interface PaginationLinkProps
+  extends Pick<React.ComponentProps<typeof Button>, "size">,
+    React.ComponentProps<"a"> {
   isActive?: boolean;
-} & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<"a">;
+}
 
-function PaginationLink({
+export function PaginationLink({
   className,
   isActive,
   size = "icon",
@@ -63,10 +70,13 @@ function PaginationLink({
   );
 }
 
-function PaginationPrevious({
+export interface PaginationPreviousProps
+  extends React.ComponentProps<typeof PaginationLink> {}
+
+export function PaginationPrevious({
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+}: PaginationPreviousProps) {
   return (
     <PaginationLink
       aria-label="Go to previous page"
@@ -80,10 +90,10 @@ function PaginationPrevious({
   );
 }
 
-function PaginationNext({
-  className,
-  ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+export interface PaginationNextProps
+  extends React.ComponentProps<typeof PaginationLink> {}
+
+export function PaginationNext({ className, ...props }: PaginationNextProps) {
   return (
     <PaginationLink
       aria-label="Go to next page"
@@ -97,10 +107,12 @@ function PaginationNext({
   );
 }
 
-function PaginationEllipsis({
+export interface PaginationEllipsisProps extends React.ComponentProps<"span"> {}
+
+export function PaginationEllipsis({
   className,
   ...props
-}: React.ComponentProps<"span">) {
+}: PaginationEllipsisProps) {
   return (
     <span
       aria-hidden={true}
@@ -113,13 +125,3 @@ function PaginationEllipsis({
     </span>
   );
 }
-
-export {
-  Pagination,
-  PaginationContent,
-  PaginationLink,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
-  PaginationEllipsis,
-};

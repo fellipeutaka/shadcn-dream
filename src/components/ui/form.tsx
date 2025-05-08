@@ -16,11 +16,11 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/cva";
 import { createContext, useContext, useId } from "react";
 
-const Form = FormProvider;
+export const Form = FormProvider;
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 > = {
   name: TName;
 };
@@ -29,12 +29,17 @@ const FormFieldContext = createContext<FormFieldContextValue>(
   {} as FormFieldContextValue
 );
 
-const FormField = <
+export interface FormFieldProps<
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+> extends ControllerProps<TFieldValues, TName> {}
+
+export const FormField = <
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 >({
   ...props
-}: ControllerProps<TFieldValues, TName>) => {
+}: FormFieldProps<TFieldValues, TName>) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />
@@ -42,7 +47,7 @@ const FormField = <
   );
 };
 
-const useFormField = () => {
+export const useFormField = () => {
   const fieldContext = useContext(FormFieldContext);
   const itemContext = useContext(FormItemContext);
   const { getFieldState } = useFormContext();
@@ -73,7 +78,9 @@ const FormItemContext = createContext<FormItemContextValue>(
   {} as FormItemContextValue
 );
 
-function FormItem({ className, ...props }: React.ComponentProps<"div">) {
+export interface FormItemProps extends React.ComponentProps<"div"> {}
+
+export function FormItem({ className, ...props }: FormItemProps) {
   const id = useId();
 
   return (
@@ -87,10 +94,10 @@ function FormItem({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function FormLabel({
-  className,
-  ...props
-}: React.ComponentProps<typeof LabelPrimitive.Root>) {
+export interface FormLabelProps
+  extends React.ComponentProps<typeof LabelPrimitive.Root> {}
+
+export function FormLabel({ className, ...props }: FormLabelProps) {
   const { error, formItemId } = useFormField();
 
   return (
@@ -104,7 +111,10 @@ function FormLabel({
   );
 }
 
-function FormControl({ ...props }: React.ComponentProps<typeof Slot.Slot>) {
+export interface FormControlProps
+  extends React.ComponentProps<typeof Slot.Slot> {}
+
+export function FormControl({ ...props }: FormControlProps) {
   const { error, formItemId, formDescriptionId, formMessageId } =
     useFormField();
 
@@ -121,7 +131,9 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot.Slot>) {
   );
 }
 
-function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
+export interface FormDescriptionProps extends React.ComponentProps<"p"> {}
+
+export function FormDescription({ className, ...props }: FormDescriptionProps) {
   const { formDescriptionId } = useFormField();
 
   return (
@@ -134,7 +146,9 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
   );
 }
 
-function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
+export interface FormMessageProps extends React.ComponentProps<"p"> {}
+
+export function FormMessage({ className, ...props }: FormMessageProps) {
   const { error, formMessageId } = useFormField();
   const body = error ? String(error?.message ?? "") : props.children;
 
@@ -153,14 +167,3 @@ function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
     </p>
   );
 }
-
-export {
-  useFormField,
-  Form,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormDescription,
-  FormMessage,
-  FormField,
-};

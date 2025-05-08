@@ -1,6 +1,8 @@
 import { cn } from "@/lib/cva";
 
-function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+export interface InputProps extends React.ComponentProps<"input"> {}
+
+export function Input({ className, type, ...props }: InputProps) {
   return (
     <input
       type={type}
@@ -15,5 +17,3 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
     />
   );
 }
-
-export { Input };

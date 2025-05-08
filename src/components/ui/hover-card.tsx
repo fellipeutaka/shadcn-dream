@@ -4,26 +4,31 @@ import { HoverCard as HoverCardPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/cva";
 
-function HoverCard({
-  ...props
-}: React.ComponentProps<typeof HoverCardPrimitive.Root>) {
+export interface HoverCardProps
+  extends React.ComponentProps<typeof HoverCardPrimitive.Root> {}
+
+export function HoverCard({ ...props }: HoverCardProps) {
   return <HoverCardPrimitive.Root data-slot="hover-card" {...props} />;
 }
 
-function HoverCardTrigger({
-  ...props
-}: React.ComponentProps<typeof HoverCardPrimitive.Trigger>) {
+export interface HoverCardTriggerProps
+  extends React.ComponentProps<typeof HoverCardPrimitive.Trigger> {}
+
+export function HoverCardTrigger({ ...props }: HoverCardTriggerProps) {
   return (
     <HoverCardPrimitive.Trigger data-slot="hover-card-trigger" {...props} />
   );
 }
 
-function HoverCardContent({
+export interface HoverCardContentProps
+  extends React.ComponentProps<typeof HoverCardPrimitive.Content> {}
+
+export function HoverCardContent({
   className,
   align = "center",
   sideOffset = 4,
   ...props
-}: React.ComponentProps<typeof HoverCardPrimitive.Content>) {
+}: HoverCardContentProps) {
   return (
     <HoverCardPrimitive.Portal data-slot="hover-card-portal">
       <HoverCardPrimitive.Content
@@ -39,5 +44,3 @@ function HoverCardContent({
     </HoverCardPrimitive.Portal>
   );
 }
-
-export { HoverCard, HoverCardTrigger, HoverCardContent };
