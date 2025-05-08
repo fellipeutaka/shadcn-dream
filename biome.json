@@ -27,7 +27,8 @@
       "style": {
         "noDefaultExport": "off",
         "noNamespaceImport": "off",
-        "useNamingConvention": "off"
+        "useNamingConvention": "off",
+        "noImplicitBoolean": "off"
       }
     }
   },

@@ -570,7 +570,7 @@ export function SidebarMenuButton({
 
   return (
     <Tooltip>
-      <TooltipTrigger asChild={true}>{button}</TooltipTrigger>
+      <TooltipTrigger asChild>{button}</TooltipTrigger>
       <TooltipContent
         side="right"
         align="center"
