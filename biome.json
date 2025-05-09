@@ -22,13 +22,24 @@
     "rules": {
       "all": true,
       "suspicious": {
-        "noReactSpecificProps": "off"
+        "noReactSpecificProps": "off",
+        "noConsole": {
+          "fix": "safe",
+          "level": "error",
+          "options": {
+            "allow": ["warn", "error", "info"]
+          }
+        },
+        "noConsoleLog": "off"
       },
       "style": {
         "noDefaultExport": "off",
         "noNamespaceImport": "off",
         "useNamingConvention": "off",
         "noImplicitBoolean": "off"
+      },
+      "correctness": {
+        "useImportExtensions": "off"
       }
     }
   },
