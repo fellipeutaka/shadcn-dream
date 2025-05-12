@@ -14,7 +14,7 @@ export function SkeletonDemo() {
       <div className="flex w-full flex-wrap items-start gap-4">
         {Array.from({ length: 3 }).map((_, index) => (
           // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-          <Card key={index} className="w-full @md:w-auto @md:min-w-sm">
+          <Card key={index} className="@md:w-auto w-full @md:min-w-sm">
             <CardHeader>
               <Skeleton className="h-4 w-2/3" />
               <Skeleton className="h-4 w-1/2" />

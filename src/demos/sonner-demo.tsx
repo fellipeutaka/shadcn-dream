@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const promiseCode = "`${data.name} toast has been added`";
 
@@ -49,7 +49,7 @@ const allTypes = [
       toast.message("Event has been created", {
         action: {
           label: "Undo",
-          onClick: () => console.log("Undo"),
+          onClick: () => console.info("Undo"),
         },
       }),
   },
@@ -59,7 +59,7 @@ const allTypes = [
       toast.message("Event has been created", {
         cancel: {
           label: "Cancel",
-          onClick: () => console.log("Cancel"),
+          onClick: () => console.info("Cancel"),
         },
       }),
   },
@@ -94,7 +94,7 @@ toast.promise(promise, {
 ];
 
 export function SonnerDemo() {
-  const [activeType, setActiveType] = React.useState(allTypes[0]);
+  const [activeType, setActiveType] = useState(allTypes[0]);
   return (
     <div className="flex flex-wrap gap-4">
       <Button onClick={() => toast("My first toast")} variant="outline">
@@ -107,7 +107,7 @@ export function SonnerDemo() {
             description: "Sunday, December 03, 2023 at 9:00 AM",
             action: {
               label: "Undo",
-              onClick: () => console.log("Undo"),
+              onClick: () => console.info("Undo"),
             },
           })
         }

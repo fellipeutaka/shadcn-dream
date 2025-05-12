@@ -1,7 +1,6 @@
 "use client";
 
 import { REGEXP_ONLY_DIGITS } from "input-otp";
-import * as React from "react";
 
 import {
   InputOTP,
@@ -10,6 +9,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { Label } from "@/components/ui/label";
+import { useState } from "react";
 
 export function InputOTPDemo() {
   return (
@@ -62,7 +62,7 @@ function InputOTPPattern() {
 }
 
 function InputOTPWithSeparator() {
-  const [value, setValue] = React.useState("123456");
+  const [value, setValue] = useState("123456");
 
   return (
     <div className="grid gap-2">

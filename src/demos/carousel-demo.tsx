@@ -9,7 +9,7 @@ import {
 
 export function CarouselDemo() {
   return (
-    <div className="hidden w-full flex-col items-center gap-4 @4xl:flex">
+    <div className="@4xl:flex hidden w-full flex-col items-center gap-4">
       <Carousel className="max-w-sm *:data-[slot=carousel-next]:hidden *:data-[slot=carousel-previous]:hidden *:data-[slot=carousel-next]:md:inline-flex *:data-[slot=carousel-previous]:md:inline-flex">
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
@@ -18,7 +18,7 @@ export function CarouselDemo() {
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <span className="text-4xl font-semibold">{index + 1}</span>
+                    <span className="font-semibold text-4xl">{index + 1}</span>
                   </CardContent>
                 </Card>
               </div>
@@ -41,7 +41,7 @@ export function CarouselDemo() {
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <span className="text-3xl font-semibold">{index + 1}</span>
+                    <span className="font-semibold text-3xl">{index + 1}</span>
                   </CardContent>
                 </Card>
               </div>
@@ -59,7 +59,7 @@ export function CarouselDemo() {
               <div className="p-1">
                 <Card>
                   <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <span className="text-2xl font-semibold">{index + 1}</span>
+                    <span className="font-semibold text-2xl">{index + 1}</span>
                   </CardContent>
                 </Card>
               </div>

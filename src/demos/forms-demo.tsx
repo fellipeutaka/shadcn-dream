@@ -1,7 +1,6 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -24,6 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { useMemo, useState } from "react";
 
 const plans = [
   {
@@ -93,9 +93,9 @@ const themes = {
 
 export function FormsDemo() {
   const { theme: mode = "light" } = useTheme();
-  const [theme, setTheme] = React.useState<keyof typeof themes>();
+  const [theme, setTheme] = useState<keyof typeof themes>();
 
-  const themeStyles = React.useMemo(() => {
+  const themeStyles = useMemo(() => {
     if (!theme) {
       return null;
     }
@@ -170,7 +170,7 @@ export function FormsDemo() {
                 </Select>
               </div>
               <fieldset className="flex flex-col gap-3">
-                <legend className="text-sm font-medium">Plan</legend>
+                <legend className="font-medium text-sm">Plan</legend>
                 <p className="text-muted-foreground text-sm">
                   Select the plan that best fits your needs.
                 </p>
@@ -180,7 +180,7 @@ export function FormsDemo() {
                 >
                   {plans.map((plan) => (
                     <Label
-                      className="has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-input/30 flex items-start gap-3 rounded-lg border p-3"
+                      className="flex items-start gap-3 rounded-lg border p-3 has-[[data-state=checked]]:border-ring has-[[data-state=checked]]:bg-input/30"
                       key={plan.id}
                     >
                       <RadioGroupItem
@@ -190,7 +190,7 @@ export function FormsDemo() {
                       />
                       <div className="grid gap-1 font-normal">
                         <div className="font-medium">{plan.name}</div>
-                        <div className="text-muted-foreground pr-2 text-xs leading-snug text-balance">
+                        <div className="text-balance pr-2 text-muted-foreground text-xs leading-snug">
                           {plan.description}
                         </div>
                       </div>

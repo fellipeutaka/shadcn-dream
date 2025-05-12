@@ -281,7 +281,7 @@ export function FormDemo() {
                               }}
                             />
                           </FormControl>
-                          <FormLabel className="text-sm leading-tight font-normal">
+                          <FormLabel className="font-normal text-sm leading-tight">
                             {item.label}
                           </FormLabel>
                         </FormItem>
@@ -339,7 +339,7 @@ export function FormDemo() {
           )}
         />
         <div>
-          <h3 className="mb-4 text-lg font-medium">Email Notifications</h3>
+          <h3 className="mb-4 font-medium text-lg">Email Notifications</h3>
           <div className="flex flex-col gap-4">
             <FormField
               control={form.control}

@@ -15,7 +15,6 @@ import {
   TrashIcon,
   UserIcon,
 } from "lucide-react";
-import * as React from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -36,6 +35,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useState } from "react";
 
 export function DropdownMenuDemo() {
   return (
@@ -110,9 +110,9 @@ function DropdownMenuSimple() {
 }
 
 function DropdownMenuCheckboxes() {
-  const [showStatusBar, setShowStatusBar] = React.useState(true);
-  const [showActivityBar, setShowActivityBar] = React.useState(false);
-  const [showPanel, setShowPanel] = React.useState(false);
+  const [showStatusBar, setShowStatusBar] = useState(true);
+  const [showActivityBar, setShowActivityBar] = useState(false);
+  const [showPanel, setShowPanel] = useState(false);
 
   return (
     <DropdownMenu>
@@ -167,7 +167,7 @@ function DropdownMenuCheckboxes() {
 }
 
 function DropdownMenuRadioGroupDemo() {
-  const [position, setPosition] = React.useState("bottom");
+  const [position, setPosition] = useState("bottom");
 
   return (
     <DropdownMenu>
@@ -204,11 +204,11 @@ function DropdownMenuWithAvatar() {
           </Avatar>
           <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-semibold">shadcn</span>
-            <span className="text-muted-foreground truncate text-xs">
+            <span className="truncate text-muted-foreground text-xs">
               shadcn@example.com
             </span>
           </div>
-          <ChevronsUpDownIcon className="text-muted-foreground ml-auto" />
+          <ChevronsUpDownIcon className="ml-auto text-muted-foreground" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
@@ -223,7 +223,7 @@ function DropdownMenuWithAvatar() {
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-semibold">shadcn</span>
-              <span className="text-muted-foreground truncate text-xs">
+              <span className="truncate text-muted-foreground text-xs">
                 shadcn@example.com
               </span>
             </div>
@@ -287,7 +287,7 @@ function DropdownMenuAvatarOnly() {
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-semibold">leerob</span>
-              <span className="text-muted-foreground truncate text-xs">
+              <span className="truncate text-muted-foreground text-xs">
                 leerob@example.com
               </span>
             </div>

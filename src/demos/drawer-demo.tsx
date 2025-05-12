@@ -1,7 +1,6 @@
 "use client";
 
 import { Minus, Plus } from "lucide-react";
-import * as React from "react";
 import { Bar, BarChart, ResponsiveContainer } from "recharts";
 
 import { Button } from "@/components/ui/button";
@@ -15,6 +14,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { useCallback, useState } from "react";
 
 const data = [
   {
@@ -69,9 +69,9 @@ export function DrawerDemo() {
 }
 
 function DrawerBottom() {
-  const [goal, setGoal] = React.useState(350);
+  const [goal, setGoal] = useState(350);
 
-  const onClick = React.useCallback((adjustment: number) => {
+  const onClick = useCallback((adjustment: number) => {
     setGoal((prevGoal) => Math.max(200, Math.min(400, prevGoal + adjustment)));
   }, []);
 
@@ -99,10 +99,10 @@ function DrawerBottom() {
                 <span className="sr-only">Decrease</span>
               </Button>
               <div className="flex-1 text-center">
-                <div className="text-7xl font-bold tracking-tighter">
+                <div className="font-bold text-7xl tracking-tighter">
                   {goal}
                 </div>
-                <div className="text-muted-foreground text-[0.70rem] uppercase">
+                <div className="text-[0.70rem] text-muted-foreground uppercase">
                   Calories/day
                 </div>
               </div>
@@ -157,7 +157,7 @@ function DrawerScrollableContent() {
           <DrawerDescription>Set your daily activity goal.</DrawerDescription>
         </DrawerHeader>
         <div className="overflow-y-auto px-4 text-sm">
-          <h4 className="mb-4 text-lg leading-none font-medium">Lorem Ipsum</h4>
+          <h4 className="mb-4 font-medium text-lg leading-none">Lorem Ipsum</h4>
           {Array.from({ length: 10 }).map((_, index) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
             <p key={index} className="mb-4 leading-normal">

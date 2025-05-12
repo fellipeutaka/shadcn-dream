@@ -1,8 +1,8 @@
 import Image from "next/image";
-import * as React from "react";
 
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import { Fragment } from "react";
 
 export function ScrollAreaDemo() {
   return (
@@ -22,12 +22,12 @@ function ScrollAreaVertical() {
     <div className="flex flex-col gap-6">
       <ScrollArea className="h-72 w-48 rounded-md border">
         <div className="p-4">
-          <h4 className="mb-4 text-sm leading-none font-medium">Tags</h4>
+          <h4 className="mb-4 font-medium text-sm leading-none">Tags</h4>
           {tags.map((tag) => (
-            <React.Fragment key={tag}>
+            <Fragment key={tag}>
               <div className="text-sm">{tag}</div>
               <Separator className="my-2" />
-            </React.Fragment>
+            </Fragment>
           ))}
         </div>
       </ScrollArea>
@@ -65,9 +65,9 @@ function ScrollAreaHorizontalDemo() {
                 height={400}
               />
             </div>
-            <figcaption className="text-muted-foreground pt-2 text-xs">
+            <figcaption className="pt-2 text-muted-foreground text-xs">
               Photo by{" "}
-              <span className="text-foreground font-semibold">
+              <span className="font-semibold text-foreground">
                 {artwork.artist}
               </span>
             </figcaption>

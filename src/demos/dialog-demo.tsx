@@ -73,7 +73,7 @@ function DialogScrollableContent() {
           </DialogDescription>
         </DialogHeader>
         <div className="-mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
-          <h4 className="mb-4 text-lg leading-none font-medium">Lorem Ipsum</h4>
+          <h4 className="mb-4 font-medium text-lg leading-none">Lorem Ipsum</h4>
           {Array.from({ length: 10 }).map((_, index) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
             <p key={index} className="mb-4 leading-normal">
@@ -106,7 +106,7 @@ function DialogWithStickyFooter() {
           </DialogDescription>
         </DialogHeader>
         <div className="-mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
-          <h4 className="mb-4 text-lg leading-none font-medium">Lorem Ipsum</h4>
+          <h4 className="mb-4 font-medium text-lg leading-none">Lorem Ipsum</h4>
           {Array.from({ length: 10 }).map((_, index) => (
             // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
             <p key={index} className="mb-4 leading-normal">

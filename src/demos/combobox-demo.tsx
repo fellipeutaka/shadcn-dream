@@ -6,7 +6,6 @@ import {
   ChevronsUpDown,
   PlusCircleIcon,
 } from "lucide-react";
-import * as React from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -25,6 +24,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/cva";
+import { useMemo, useState } from "react";
 
 const frameworks = [
   {
@@ -121,8 +121,8 @@ export function ComboboxDemo() {
 }
 
 function FrameworkCombobox({ frameworks }: { frameworks: Framework[] }) {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -179,10 +179,10 @@ function UserCombobox({
   users: User[];
   selectedUserId: string;
 }) {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(selectedUserId);
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(selectedUserId);
 
-  const selectedUser = React.useMemo(
+  const selectedUser = useMemo(
     () => users.find((user) => user.id === value),
     [value, users]
   );
@@ -265,10 +265,10 @@ function TimezoneCombobox({
   timezones: Timezone[];
   selectedTimezone: Timezone["timezones"][number];
 }) {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(selectedTimezone.value);
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(selectedTimezone.value);
 
-  const selectedGroup = React.useMemo(
+  const selectedGroup = useMemo(
     () =>
       timezones.find((group) =>
         group.timezones.find((tz) => tz.value === value)
@@ -276,7 +276,7 @@ function TimezoneCombobox({
     [value, timezones]
   );
 
-  const selectedTimezoneLabel = React.useMemo(
+  const selectedTimezoneLabel = useMemo(
     () => selectedGroup?.timezones.find((tz) => tz.value === value)?.label,
     [value, selectedGroup]
   );
@@ -290,7 +290,7 @@ function TimezoneCombobox({
         >
           {selectedTimezone ? (
             <div className="flex flex-col items-start gap-0.5">
-              <span className="text-muted-foreground text-xs font-normal">
+              <span className="font-normal text-muted-foreground text-xs">
                 {selectedGroup?.label}
               </span>
               <span>{selectedTimezoneLabel}</span>
@@ -329,7 +329,7 @@ function TimezoneCombobox({
               </CommandGroup>
             ))}
             <CommandSeparator className="sticky bottom-10" />
-            <CommandGroup className="bg-popover sticky bottom-0">
+            <CommandGroup className="sticky bottom-0 bg-popover">
               <CommandItem>
                 <PlusCircleIcon />
                 Create timezone
@@ -343,10 +343,8 @@ function TimezoneCombobox({
 }
 
 function ComboboxWithCheckbox({ frameworks }: { frameworks: Framework[] }) {
-  const [open, setOpen] = React.useState(false);
-  const [selectedFrameworks, setSelectedFrameworks] = React.useState<
-    Framework[]
-  >([]);
+  const [open, setOpen] = useState(false);
+  const [selectedFrameworks, setSelectedFrameworks] = useState<Framework[]>([]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -385,7 +383,7 @@ function ComboboxWithCheckbox({ frameworks }: { frameworks: Framework[] }) {
                   }}
                 >
                   <div
-                    className="border-input data-[selected=true]:border-primary data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground pointer-events-none size-4 shrink-0 rounded-[4px] border transition-all select-none *:[svg]:opacity-0 data-[selected=true]:*:[svg]:opacity-100"
+                    className="pointer-events-none size-4 shrink-0 select-none rounded-[4px] border border-input transition-all data-[selected=true]:border-primary data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground *:[svg]:opacity-0 data-[selected=true]:*:[svg]:opacity-100"
                     data-selected={selectedFrameworks.some(
                       (f) => f.value === framework.value
                     )}
