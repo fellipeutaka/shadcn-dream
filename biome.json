@@ -40,6 +40,15 @@
       },
       "correctness": {
         "useImportExtensions": "off"
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "fix": "safe",
+          "level": "error",
+          "options": {
+            "functions": ["cva", "cx", "cn"]
+          }
+        }
       }
     }
   },
