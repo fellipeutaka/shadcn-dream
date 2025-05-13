@@ -1,9 +1,13 @@
 "use client";
 
-import * as RechartsPrimitive from "recharts";
-
 import { cn } from "@/lib/cva";
 import { createContext, useContext, useId, useMemo } from "react";
+import {
+  Legend,
+  type LegendProps,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
 
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: "", dark: ".dark" } as const;
@@ -37,9 +41,7 @@ function useChart() {
 
 export interface ChartContainerProps extends React.ComponentProps<"div"> {
   config: ChartConfig;
-  children: React.ComponentProps<
-    typeof RechartsPrimitive.ResponsiveContainer
-  >["children"];
+  children: React.ComponentProps<typeof ResponsiveContainer>["children"];
 }
 
 export function ChartContainer({
@@ -64,9 +66,7 @@ export function ChartContainer({
         {...props}
       >
         <ChartStyle id={chartId} config={config} />
-        <RechartsPrimitive.ResponsiveContainer>
-          {children}
-        </RechartsPrimitive.ResponsiveContainer>
+        <ResponsiveContainer>{children}</ResponsiveContainer>
       </div>
     </ChartContext.Provider>
   );
@@ -111,10 +111,10 @@ ${colorConfig
   );
 };
 
-export const ChartTooltip = RechartsPrimitive.Tooltip;
+export const ChartTooltip = Tooltip;
 
 export interface ChartTooltipContentProps
-  extends React.ComponentProps<typeof RechartsPrimitive.Tooltip>,
+  extends React.ComponentProps<typeof Tooltip>,
     Omit<React.ComponentProps<"div">, "content"> {
   hideLabel?: boolean;
   hideIndicator?: boolean;
@@ -261,11 +261,11 @@ export function ChartTooltipContent({
   );
 }
 
-export const ChartLegend = RechartsPrimitive.Legend;
+export const ChartLegend = Legend;
 
 export interface ChartLegendContentProps
   extends React.ComponentProps<"div">,
-    Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> {
+    Pick<LegendProps, "payload" | "verticalAlign"> {
   hideIcon?: boolean;
   nameKey?: string;
 }
